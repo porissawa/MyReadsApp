@@ -12,7 +12,14 @@ const Book = (props) => {
     )
 }
 
-class Shelf extends Component {
+const Shelf = (props) => {  
+    return(
+        <Book cover={props.cover} title={props.title} authors={props.authors} status={props.status} key={props.title}/>
+    )
+}
+
+
+class Container extends Component {
     state = {
         books: [
         {
@@ -39,35 +46,54 @@ class Shelf extends Component {
         },
         ]
     };
+//Dá pra fazer a lógica das prateleiras usando .filter e procurando pelo status certo. 
+//Três são geradas por padrão, o state fica dentro do Container e as funções com .filter definem o que vai pra cada.
 
-    
     render(){
         const books = this.state.books
         return(
-            books.map((book) => {
-                return(
-                    <Book cover={book.imageLinks.thumbnail} title={book.title} authors={book.authors} />
-                )
-            }) 
-        )
-    }
-}
-
-class Container extends Component {
-render(){
-    return(
-        <div className='app'>
-            <div className='list-books-title'>
-                <h1>MyBooks App</h1>
-            </div>
-            <div className='list-books-content'>
-                <div className='bookshelf'>
-                    <Shelf />
+            <div className='app'>
+                <div className='list-books-title'>
+                    <h1>MyBooks App</h1>
+                </div>
+                <div className='list-books-content'>
+                    <div className='bookshelf'>
+                        {books.map((book) => {
+                            if(book.status === 'want'){
+                                return(
+                                    <Book cover={book.imageLinks.thumbnail} title={book.title} authors={book.authors} status={book.status} key={book.title}/>
+                                )
+                            } else {
+                                return(null)
+                            }
+                        })}
+                    </div>
+                    <div className='bookshelf'>
+                        {books.map((book) => {
+                            if(book.status === 'read'){
+                                return(
+                                    <Book cover={book.imageLinks.thumbnail} title={book.title} authors={book.authors} status={book.status} key={book.title}/>
+                                )
+                            } else {
+                                return(null)
+                            }
+                        })}
+                    </div>
+                    <div className='bookshelf'>
+                        {books.map((book) => {
+                            if(book.status === 'have'){
+                                return(
+                                    <Book cover={book.imageLinks.thumbnail} title={book.title} authors={book.authors} status={book.status} key={book.title}/>
+                                )
+                            } else {
+                                return(null)
+                            }
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 }
 
 export default Container
