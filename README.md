@@ -2,7 +2,7 @@
 
 This is the first project from Udacity's React Nanodegree.
 
-Clone/download the repo to your machine, install the dependencies with 'npm install' and start the dev server with 'npm start'.
+Clone/download the repo to your machine, install the dependencies with <code>npm install</code> and start the dev server with <code>npm start</code>.
 
 The main page ('/') is your book collection, displayed on three different shelves, Currently Reading, Want To Read and Read. If you click on the add sign on the bottom-left corner, you'll be redirected to the search page ('/search') where you can look for new books to add to your collection.
 
